@@ -4,12 +4,14 @@
 #include "basellm.h"
 #include "llama.h"
 #include "fastllm.h"
+#include "qwen.h"
 
 enum LLM_TYPE {
 	LLM_TYPE_CHATGLM = 0,
 	LLM_TYPE_MOSS = 1,
 	LLM_TYPE_VICUNA = 2,
 	LLM_TYPE_BAICHUAN = 3,
+	LLM_TYPE_QWEN = 4,
 };
 
 class factoryllm {
@@ -29,6 +31,9 @@ public:
                 break;
             case LLM_TYPE_VICUNA:
                 pLLM = new fastllm::LlamaModel();
+                break;
+            case LLM_TYPE_QWEN:
+                pLLM = new fastllm::QWenModel();
                 break;
             default:
                 break;
